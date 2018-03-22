@@ -120,17 +120,26 @@ int main()
 			}
 			else {
 				// Print Request
-				char s[128];
-				int endoffile;
+				char s[129];
+				int endoffile = 0;
+				int flaaaaag = 0;
 				printf("Read successful at request %d; request index: %d\nkeyword: ", i, rptr[0]);
-				for(int32_t i = 1; i < 128; i++)
+				for(int32_t i = 1; i < 128; i++) {
 					if(rptr[i] != '#')
 						s[i-1] = rptr[i];
 					else {
 						endoffile = i;
+						flaaaaag = 1;
 						break;
 					}
-				s[endoffile] = '\0';
+					fflush(stdout);
+				}
+
+				if(flaaaaag == 0)
+					s[128] = '\0';
+				else
+					s[endoffile] = '\0';
+					
 				printf("%s\n", s);
 
 				// Process Request
@@ -147,7 +156,8 @@ int main()
 				pthread_join(thread, &status);
 				printf("Search results: ");
 				for(int i = 0; i < 128; i++) {
-					printf("%d ", write_address[i]);
+					if(write_address[i] != 0)
+						printf("%d ", write_address[i]);
 				}
 				printf("\n-----------------------------------\n");
 			}
@@ -179,7 +189,7 @@ int search(char* file_name, int32_t* write_address) {
     FILE *file = fopen("test.txt", "r");
     if (file) {
         while ((nread = fread(buffer, 1, 1024, file)) > 0) {
-            if(strstr(buffer, "beratbicer")) {
+            if(strstr(buffer, file_name)) {
                 write_address[index] = lineNo;
                 index++;
             }
