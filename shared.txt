@@ -20,7 +20,7 @@
 #define MAX_LINE 1024
 #define MAX_FILENAME 128
 #define MAX_SEMNAME 128
-#define MIN_LINENO !
+#define MIN_LINENO 1
 
 typedef struct search_arguments {
 	char    *keyword;
@@ -51,10 +51,10 @@ typedef struct shared_memory_segment {
     search_request_queue search_request_queue;
     search_result_queue search_result_queue;
     int search_queue_state[N];
-}
+} shared_memory_segment;
 
 #define SEM_PERMISSIONS (S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP)
 
-const char *name = "shm";
+const char *name = "osp2_shm";
 const int SIZE = 4096;
 #define FILE_NAME "test.txt"
