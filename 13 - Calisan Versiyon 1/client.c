@@ -178,10 +178,11 @@ int main(int argc, char **argv) {
     else {
         printf("Termination: No available result queue.\n");
     }
-
     //------------Grab Sem----------------------
     sem_wait(semaphore_queue_state);
     //----------critial segment start------------
+    sgmnt_ptr->search_result_queue[index].in = 0;
+    sgmnt_ptr->search_result_queue[index].out = 0;
     sgmnt_ptr->search_queue_state[index] = 0;
     //-----------critical segment end------------
     //-------------Release Sem-------------------
