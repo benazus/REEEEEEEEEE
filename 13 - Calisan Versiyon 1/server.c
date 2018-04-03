@@ -353,7 +353,7 @@ void *search(void* ptr){
     int line = MIN_LINENO;
     FILE* file = fopen(file_name, "r");
     if(file) {
-        while((nread = fread(buffer, 1, MAX_LINE, file)) == MAX_LINE) {
+        while(fgets(buffer, MAX_LINE, file)) {
             if(strstr(buffer, keyword)) {
                 printf("in: %d; out: %d\n", shm->search_result_queue[index].in, shm->search_result_queue[index].out);
                 while((shm->search_result_queue[index].in + 1) % (N + 1) == shm->search_result_queue[index].out);
