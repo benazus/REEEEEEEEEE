@@ -355,7 +355,6 @@ void *search(void* ptr){
     if(file) {
         while(fgets(buffer, MAX_LINE, file)) {
             if(strstr(buffer, keyword)) {
-                printf("in: %d; out: %d\n", shm->search_result_queue[index].in, shm->search_result_queue[index].out);
                 while((shm->search_result_queue[index].in + 1) % (N + 1) == shm->search_result_queue[index].out);
                 sem_wait(semaphore);
                 shm->search_result_queue[index].data[shm->search_result_queue[index].in] = line;
