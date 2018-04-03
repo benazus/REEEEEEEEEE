@@ -1,4 +1,4 @@
-cs342project2
+cs342project02
 
 Bilkent University Spring 2018 CS342: Operating Systems Project 2
 
