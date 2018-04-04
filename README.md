@@ -6,6 +6,8 @@ Assignment Link: https://drive.google.com/open?id=1WcFMfyyofBxKhhtL9waSSficZNFmm
 
 Course Page: http://www.cs.bilkent.edu.tr/~korpe/courses/cs342spring2018/index.html
 
+------------------------------------------------------------------------------------------------------------------------------------------
+
 Notes on the project:
 
 After first compilation run server first with your arguments. Then, any number of clients can be executed.
